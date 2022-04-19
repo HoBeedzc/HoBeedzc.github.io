@@ -1,0 +1,615 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>离散数学中英对照表 | Hobee</title><meta name="description" content="BUAA SEM MSE IMIS 专业必修课之一，为了巩固学习和更好的复习，整理一下"><meta name="keywords" content="知识点整理,离散数学"><meta name="author" content="hobee"><meta name="copyright" content="hobee"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/apple.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="http://ta.qq.com"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="离散数学中英对照表"><meta name="twitter:description" content="BUAA SEM MSE IMIS 专业必修课之一，为了巩固学习和更好的复习，整理一下"><meta name="twitter:image" content="https://hobeedzc.github.io/img/cover/lisan.jpg"><meta property="og:type" content="article"><meta property="og:title" content="离散数学中英对照表"><meta property="og:url" content="https://hobeedzc.github.io/2020/05/22/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7%E8%A1%A8/"><meta property="og:site_name" content="Hobee"><meta property="og:description" content="BUAA SEM MSE IMIS 专业必修课之一，为了巩固学习和更好的复习，整理一下"><meta property="og:image" content="https://hobeedzc.github.io/img/cover/lisan.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://hobeedzc.github.io/2020/05/22/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7%E8%A1%A8/"><link rel="prev" title="科普|什么是物联网平台" href="https://hobeedzc.github.io/2020/07/21/%E7%A7%91%E6%99%AE-%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%A9%E8%81%94%E7%BD%91%E5%B9%B3%E5%8F%B0/"><link rel="next" title="离散数学整理（三）- 图与树" href="https://hobeedzc.github.io/2020/05/21/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E6%95%B4%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89-%20%E5%9B%BE%E4%B8%8E%E6%A0%91/"><script src="https://tajs.qq.com/stats?sId=66539279" charset="UTF-8"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://hobeedzc.github.io/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: true
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Hobee" type="application/atom+xml">
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/logo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">14</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">18</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/photo/"><i class="fa-fw fa fa-photo"></i><span> Photo</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E8%8B%B1%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7%E8%A1%A8"><span class="toc-number">2.</span> <span class="toc-text">中英术语对照表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E9%A2%98%E4%B8%8E%E9%80%BB%E8%BE%91"><span class="toc-number">2.1.</span> <span class="toc-text">命题与逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E4%B8%8E%E5%85%B3%E7%B3%BB"><span class="toc-number">2.2.</span> <span class="toc-text">集合与关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E4%B8%8E%E6%A0%91"><span class="toc-number">2.3.</span> <span class="toc-text">图与树</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/img/cover/lisan.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Hobee</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/photo/"><i class="fa-fw fa fa-photo"></i><span> Photo</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">离散数学中英对照表</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-05-22 19:56:37"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-05-22</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-05-22 19:59:44"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-05-22</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><i class="fa fa-angle-right post-meta__separator" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">离散数学</a><i class="fa fa-angle-right post-meta__separator" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">知识点整理</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">1.1k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 4 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2020/05/22/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7%E8%A1%A8/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/05/22/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7%E8%A1%A8/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><div class="note success">
+            <p>本文由Hobee原创，并仅在<a href="https://hobeedzc.github.io/">本站</a>发表，仅供各位小伙伴学习交流使用。</p><p>为避免不必要的纠纷，本文禁止以任何形式转载，谢谢配合。</p><p>如有问题请通过评论区或<a href="mailto:lzqpublic@163.com">邮件</a>联系作者。</p>
+          </div>
+
+<div class="note info">
+            <p>本文封面源于网络，侵删。</p>
+          </div>
+
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>众所周之，hobee在数学的学习方面就宛如一只菜鸡，只好通过不断复习和整理的途径来巩固自己辣鸡的数学成绩。主要是我真的什么也不会了啊（哭哭脸…那就从这里开始吧！</p>
+<p>因为考核是候题目是英文的，所以我的整理也就用英文来叭（我也不想啊…</p>
+<h2 id="中英术语对照表"><a href="#中英术语对照表" class="headerlink" title="中英术语对照表"></a>中英术语对照表</h2><p>为了防止之后我自己都看不明白，在梳理知识点之前我先写一份中英术语对照表好了。</p>
+<h3 id="命题与逻辑"><a href="#命题与逻辑" class="headerlink" title="命题与逻辑"></a>命题与逻辑</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">Chinese</th>
+<th align="center">English</th>
+<th align="center">Chinese</th>
+<th align="center">English</th>
+<th align="center">Chinese</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Proposition</td>
+<td align="center">命题</td>
+<td align="center">Propositional variable</td>
+<td align="center">命题变量</td>
+<td align="center">Truth value</td>
+<td align="center">真值</td>
+</tr>
+<tr>
+<td align="center">Negation</td>
+<td align="center">否定</td>
+<td align="center">Logical operators</td>
+<td align="center">逻辑运算符</td>
+<td align="center">Compound proposition</td>
+<td align="center">复合命题</td>
+</tr>
+<tr>
+<td align="center">Truth table</td>
+<td align="center">真值表</td>
+<td align="center">Disjunction</td>
+<td align="center">析取</td>
+<td align="center">Conjunction</td>
+<td align="center">合取</td>
+</tr>
+<tr>
+<td align="center">Exclusive or</td>
+<td align="center">异或</td>
+<td align="center">Implication</td>
+<td align="center">蕴含</td>
+<td align="center">Converse</td>
+<td align="center">逆</td>
+</tr>
+<tr>
+<td align="center">Contrapositive</td>
+<td align="center">逆否</td>
+<td align="center">Inverse</td>
+<td align="center">反</td>
+<td align="center">Biconditional</td>
+<td align="center">双蕴含</td>
+</tr>
+<tr>
+<td align="center">Tautology</td>
+<td align="center">永真式</td>
+<td align="center">Contingency</td>
+<td align="center">可能</td>
+<td align="center">Logically equivalent</td>
+<td align="center">逻辑等价</td>
+</tr>
+<tr>
+<td align="center">Predicate</td>
+<td align="center">谓词</td>
+<td align="center">Propositional function</td>
+<td align="center">命题函数</td>
+<td align="center">Domain of discourse</td>
+<td align="center">论域</td>
+</tr>
+<tr>
+<td align="center">Existential quantifier</td>
+<td align="center">存在量词</td>
+<td align="center">Universal quantifier</td>
+<td align="center">全称量词</td>
+<td align="center">Free variable</td>
+<td align="center">自由变元</td>
+</tr>
+<tr>
+<td align="center">Bound variable</td>
+<td align="center">约束变量</td>
+<td align="center">Scope of a quantifier</td>
+<td align="center">量词的作用域</td>
+<td align="center">Argument</td>
+<td align="center">参数</td>
+</tr>
+<tr>
+<td align="center">Argument form</td>
+<td align="center">参数形式</td>
+<td align="center">Premise</td>
+<td align="center">条件</td>
+<td align="center">Conclusion</td>
+<td align="center">结论</td>
+</tr>
+<tr>
+<td align="center">Valid argument form</td>
+<td align="center">合法参数形式</td>
+<td align="center">Rule of inference</td>
+<td align="center">推理规则</td>
+<td align="center">Fallacy</td>
+<td align="center">谬误</td>
+</tr>
+</tbody></table>
+<h3 id="集合与关系"><a href="#集合与关系" class="headerlink" title="集合与关系"></a>集合与关系</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">Chinese</th>
+<th align="center">English</th>
+<th align="center">Chinese</th>
+<th align="center">English</th>
+<th align="center">Chinese</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Set</td>
+<td align="center">集合</td>
+<td align="center">element</td>
+<td align="center">元素</td>
+<td align="center">member of a set</td>
+<td align="center">集合的成员</td>
+</tr>
+<tr>
+<td align="center">Roster method</td>
+<td align="center">枚举</td>
+<td align="center">set builder notation</td>
+<td align="center">集合生成公式</td>
+<td align="center">empty set</td>
+<td align="center">空集</td>
+</tr>
+<tr>
+<td align="center">Universal set</td>
+<td align="center">全集</td>
+<td align="center">Venn diagram</td>
+<td align="center">VN图</td>
+<td align="center">set equality</td>
+<td align="center">集合等价</td>
+</tr>
+<tr>
+<td align="center">Subset</td>
+<td align="center">子集</td>
+<td align="center">proper subset</td>
+<td align="center">真子集</td>
+<td align="center">finite set</td>
+<td align="center">有限集</td>
+</tr>
+<tr>
+<td align="center">Infinite set</td>
+<td align="center">无限集</td>
+<td align="center">cardinality</td>
+<td align="center">势</td>
+<td align="center">power set</td>
+<td align="center">幂集</td>
+</tr>
+<tr>
+<td align="center">Union</td>
+<td align="center">并集</td>
+<td align="center">Intersection</td>
+<td align="center">交集</td>
+<td align="center">difference</td>
+<td align="center">差</td>
+</tr>
+<tr>
+<td align="center">Complement</td>
+<td align="center">补集</td>
+<td align="center">Symmetric difference</td>
+<td align="center">对称差</td>
+<td align="center">membership table</td>
+<td align="center">成员表</td>
+</tr>
+<tr>
+<td align="center">Function</td>
+<td align="center">函数</td>
+<td align="center">domain</td>
+<td align="center">值域</td>
+<td align="center">codomain</td>
+<td align="center">陪域</td>
+</tr>
+<tr>
+<td align="center">Image</td>
+<td align="center">像</td>
+<td align="center">preimage</td>
+<td align="center">原像</td>
+<td align="center">range</td>
+<td align="center">值域</td>
+</tr>
+<tr>
+<td align="center">Onto</td>
+<td align="center">满射</td>
+<td align="center">One-to-one</td>
+<td align="center">单射</td>
+<td align="center">Surgection</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Injection</td>
+<td align="center">单射</td>
+<td align="center">Bijection</td>
+<td align="center">双射</td>
+<td align="center">Inverse</td>
+<td align="center">否</td>
+</tr>
+<tr>
+<td align="center">Composition</td>
+<td align="center">复合函数</td>
+<td align="center">floor</td>
+<td align="center">下取整</td>
+<td align="center">ceiling</td>
+<td align="center">上取整</td>
+</tr>
+<tr>
+<td align="center">sequence</td>
+<td align="center">序列</td>
+<td align="center">Geometric progression</td>
+<td align="center">几何级数</td>
+<td align="center">arithmetic progression</td>
+<td align="center">算术级数</td>
+</tr>
+<tr>
+<td align="center">recurrence relation</td>
+<td align="center">递推关系</td>
+<td align="center">Countable set</td>
+<td align="center">可数集</td>
+<td align="center">Uncountable set</td>
+<td align="center">不可数集</td>
+</tr>
+<tr>
+<td align="center">alpha null</td>
+<td align="center">阿里夫零</td>
+<td align="center">Binary relation from A to B</td>
+<td align="center">二元关系</td>
+<td align="center">relation on A</td>
+<td align="center">集合A上的关系</td>
+</tr>
+<tr>
+<td align="center">Reflexive</td>
+<td align="center">自反性</td>
+<td align="center">symmetric</td>
+<td align="center">对称性</td>
+<td align="center">antisymmetric</td>
+<td align="center">反对称性</td>
+</tr>
+<tr>
+<td align="center">transitive</td>
+<td align="center">传递性</td>
+<td align="center">n-ary relation</td>
+<td align="center">n元关系</td>
+<td align="center">relational data model</td>
+<td align="center">关系数据模型</td>
+</tr>
+<tr>
+<td align="center">primary key</td>
+<td align="center">主键</td>
+<td align="center">composite key</td>
+<td align="center">复合主键</td>
+<td align="center">selection operator</td>
+<td align="center">选择运算符</td>
+</tr>
+<tr>
+<td align="center">projection</td>
+<td align="center">投影</td>
+<td align="center">join</td>
+<td align="center">并</td>
+<td align="center">digraph</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">loop</td>
+<td align="center">环</td>
+<td align="center">closure of a relation R with respect to property</td>
+<td align="center">关系R的闭包</td>
+<td align="center">connective relation</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Path</td>
+<td align="center">路径</td>
+<td align="center">circuit</td>
+<td align="center">圈</td>
+<td align="center">$R^\star$</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">equivalence relation</td>
+<td align="center">等价关系</td>
+<td align="center">equivalent class</td>
+<td align="center">等价类</td>
+<td align="center">partition</td>
+<td align="center">划分</td>
+</tr>
+<tr>
+<td align="center">Partial ordering</td>
+<td align="center">偏序</td>
+<td align="center">poset</td>
+<td align="center">偏序集合</td>
+<td align="center">comparable</td>
+<td align="center">可比</td>
+</tr>
+<tr>
+<td align="center">total ordering</td>
+<td align="center">全序</td>
+<td align="center">well-ordered set</td>
+<td align="center">良序集</td>
+<td align="center">hasse diagram</td>
+<td align="center">哈斯图</td>
+</tr>
+<tr>
+<td align="center">maximal element</td>
+<td align="center">最大元素</td>
+<td align="center">minimal element</td>
+<td align="center">最小元素</td>
+<td align="center">greatest element</td>
+<td align="center">极大元素</td>
+</tr>
+<tr>
+<td align="center">least element</td>
+<td align="center">极小元素</td>
+<td align="center">upper bound</td>
+<td align="center">上界</td>
+<td align="center">lower bound</td>
+<td align="center">下界</td>
+</tr>
+</tbody></table>
+<h3 id="图与树"><a href="#图与树" class="headerlink" title="图与树"></a>图与树</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">Chinese</th>
+<th align="center">English</th>
+<th align="center">Chinese</th>
+<th align="center">English</th>
+<th align="center">Chinese</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Graph</td>
+<td align="center">图</td>
+<td align="center">vertex&#x2F;node</td>
+<td align="center">顶点</td>
+<td align="center">edge</td>
+<td align="center">边</td>
+</tr>
+<tr>
+<td align="center">Directed graph</td>
+<td align="center">有向图</td>
+<td align="center">directed edge&#x2F;arc</td>
+<td align="center">有向边</td>
+<td align="center">multiple edges</td>
+<td align="center">多重边</td>
+</tr>
+<tr>
+<td align="center">loop</td>
+<td align="center">环</td>
+<td align="center">simple graph</td>
+<td align="center">简单图</td>
+<td align="center">multigraph</td>
+<td align="center">多重图</td>
+</tr>
+<tr>
+<td align="center">pseudograph</td>
+<td align="center">伪图</td>
+<td align="center">directed multigraph</td>
+<td align="center">多重有向图</td>
+<td align="center">mixed graph</td>
+<td align="center">混合图</td>
+</tr>
+<tr>
+<td align="center">adjacent</td>
+<td align="center">邻接</td>
+<td align="center">incident</td>
+<td align="center">关联</td>
+<td align="center">degree</td>
+<td align="center">度</td>
+</tr>
+<tr>
+<td align="center">in-degree deg-</td>
+<td align="center">入度</td>
+<td align="center">out-degree deg+</td>
+<td align="center">出度</td>
+<td align="center">complete graph $K_N$</td>
+<td align="center">完全图</td>
+</tr>
+<tr>
+<td align="center">Bipartite graph</td>
+<td align="center">二分图</td>
+<td align="center">complete bipartite graph</td>
+<td align="center">完全二分图</td>
+<td align="center">Subgraph</td>
+<td align="center">子图</td>
+</tr>
+<tr>
+<td align="center">union of two graphs</td>
+<td align="center">两图的并</td>
+<td align="center">adjacency matrix</td>
+<td align="center">邻接矩阵</td>
+<td align="center">incidence matrix</td>
+<td align="center">关联矩阵</td>
+</tr>
+<tr>
+<td align="center">graph isomorphism</td>
+<td align="center">图的同构</td>
+<td align="center">graph invariant</td>
+<td align="center">图的同构不变量</td>
+<td align="center">simple path</td>
+<td align="center">简单路径</td>
+</tr>
+<tr>
+<td align="center">simple circuit</td>
+<td align="center">简单环</td>
+<td align="center">connected graph</td>
+<td align="center">连通图</td>
+<td align="center">connected component</td>
+<td align="center">连通分量</td>
+</tr>
+<tr>
+<td align="center">vertex connectivity</td>
+<td align="center">顶点联通性</td>
+<td align="center">edge connectivity</td>
+<td align="center">边联通性</td>
+<td align="center">strongly&#x2F;weakly connected directed graph</td>
+<td align="center">强&#x2F;弱连通有向图</td>
+</tr>
+<tr>
+<td align="center">strongly&#x2F;weakly connected component of a directed graph</td>
+<td align="center">有向图的强&#x2F;弱连通分量</td>
+<td align="center">polish notation</td>
+<td align="center">波兰式</td>
+<td align="center">reverse polish notation</td>
+<td align="center">逆波兰式</td>
+</tr>
+<tr>
+<td align="center">tree</td>
+<td align="center">树</td>
+<td align="center">forest</td>
+<td align="center">森林</td>
+<td align="center">rooted tree</td>
+<td align="center">根树</td>
+</tr>
+<tr>
+<td align="center">subtree</td>
+<td align="center">子树</td>
+<td align="center">parent of $v$</td>
+<td align="center">$v$的双亲</td>
+<td align="center">child of $v$</td>
+<td align="center">$v$的孩子</td>
+</tr>
+<tr>
+<td align="center">sibling of $v$</td>
+<td align="center">$v$的兄弟姐妹</td>
+<td align="center">ancestor of $v$</td>
+<td align="center">$v$的祖先</td>
+<td align="center">descendant of $v$</td>
+<td align="center">$v$的后代</td>
+</tr>
+<tr>
+<td align="center">internal vertex</td>
+<td align="center">内顶点</td>
+<td align="center">leaf</td>
+<td align="center">叶子节点</td>
+<td align="center">level of a vertex</td>
+<td align="center">节点的层次</td>
+</tr>
+<tr>
+<td align="center">height of a tree</td>
+<td align="center">树的高度</td>
+<td align="center">m-ary tree</td>
+<td align="center">m叉树</td>
+<td align="center">full m-ary tree</td>
+<td align="center">完全m叉树</td>
+</tr>
+<tr>
+<td align="center">binary tree</td>
+<td align="center">二叉树</td>
+<td align="center">ordered tree</td>
+<td align="center">排序树</td>
+<td align="center">balanced tree</td>
+<td align="center">平衡树</td>
+</tr>
+<tr>
+<td align="center">binary search tree</td>
+<td align="center">二叉搜索树</td>
+<td align="center">decision tree</td>
+<td align="center">决策树</td>
+<td align="center">tree traversal</td>
+<td align="center">树的遍历</td>
+</tr>
+<tr>
+<td align="center">preorder traversal</td>
+<td align="center">前序遍历</td>
+<td align="center">inorder traversal</td>
+<td align="center">中序遍历</td>
+<td align="center">postorder traversal</td>
+<td align="center">后序遍历</td>
+</tr>
+<tr>
+<td align="center">infix notation</td>
+<td align="center">中序表达式</td>
+<td align="center">prefix notation</td>
+<td align="center">前序表达式</td>
+<td align="center">postfix notation</td>
+<td align="center">后序表达式</td>
+</tr>
+</tbody></table>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">hobee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://hobeedzc.github.io/2020/05/22/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7%E8%A1%A8/">https://hobeedzc.github.io/2020/05/22/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E4%B8%AD%E8%8B%B1%E5%AF%B9%E7%85%A7%E8%A1%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://HoBeedzc.github.io" target="_blank">Hobee</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">知识点整理</a><a class="post-meta__tags" href="/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">离散数学</a></div><div class="post_share"><div class="social-share" data-image="/img/logo.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/07/21/%E7%A7%91%E6%99%AE-%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%A9%E8%81%94%E7%BD%91%E5%B9%B3%E5%8F%B0/"><img class="prev_cover lazyload" data-src="/img/cover/wulianwang.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">科普|什么是物联网平台</div></div></a></div><div class="next-post pull_right"><a href="/2020/05/21/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E6%95%B4%E7%90%86%EF%BC%88%E4%B8%89%EF%BC%89-%20%E5%9B%BE%E4%B8%8E%E6%A0%91/"><img class="next_cover lazyload" data-src="/img/cover/lisan.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">离散数学整理（三）- 图与树</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/05/11/离散数学整理（一）- 命题与逻辑/" title="离散数学整理（一）-命题与逻辑"><img class="relatedPosts_cover lazyload"data-src="/img/cover/lisan.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-history fa-fw" aria-hidden="true"></i> 2020-07-21</div><div class="relatedPosts_title">离散数学整理（一）-命题与逻辑</div></div></a></div><div class="relatedPosts_item"><a href="/2020/05/21/离散数学整理（三）- 图与树/" title="离散数学整理（三）- 图与树"><img class="relatedPosts_cover lazyload"data-src="/img/cover/lisan.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-history fa-fw" aria-hidden="true"></i> 2020-06-08</div><div class="relatedPosts_title">离散数学整理（三）- 图与树</div></div></a></div><div class="relatedPosts_item"><a href="/2020/05/19/离散数学整理（二）- 集合与关系/" title="离散数学整理（二）-集合与关系"><img class="relatedPosts_cover lazyload"data-src="/img/cover/lisan.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-history fa-fw" aria-hidden="true"></i> 2020-06-05</div><div class="relatedPosts_title">离散数学整理（二）-集合与关系</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'AFB8hCVbw0tIWRABUCR6fyWH-gzGzoHsz',
+  appKey: 'GSA0KbbR0LN3DwRzaBtgerF7',
+  placeholder: 'Please leave your footprints',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'en',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" style="background-image: url(/img/cover/lisan.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By hobee</div><div class="framework-info"><span>驱动 </span><a target="_blank" rel="noopener" href="https://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/click_heart.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.8}});</script></body></html>

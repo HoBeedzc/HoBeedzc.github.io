@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Python 列表使用指南 | Hobee</title><meta name="description" content="有关Python列表类型的使用说明和进阶操作。"><meta name="keywords" content="Python,教程,列表"><meta name="author" content="hobee"><meta name="copyright" content="hobee"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/apple.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="http://ta.qq.com"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Python 列表使用指南"><meta name="twitter:description" content="有关Python列表类型的使用说明和进阶操作。"><meta name="twitter:image" content="https://hobeedzc.github.io/img/cover/Python.png"><meta property="og:type" content="article"><meta property="og:title" content="Python 列表使用指南"><meta property="og:url" content="https://hobeedzc.github.io/2020/04/01/Python%20%E5%88%97%E8%A1%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"><meta property="og:site_name" content="Hobee"><meta property="og:description" content="有关Python列表类型的使用说明和进阶操作。"><meta property="og:image" content="https://hobeedzc.github.io/img/cover/Python.png"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://hobeedzc.github.io/2020/04/01/Python%20%E5%88%97%E8%A1%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"><link rel="prev" title="Python常见异常及其简单处理" href="https://hobeedzc.github.io/2020/04/03/Python%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8%E5%8F%8A%E5%85%B6%E7%AE%80%E5%8D%95%E5%A4%84%E7%90%86/"><script src="https://tajs.qq.com/stats?sId=66539279" charset="UTF-8"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://hobeedzc.github.io/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: true
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Hobee" type="application/atom+xml">
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/logo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">14</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">18</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/photo/"><i class="fa-fw fa fa-photo"></i><span> Photo</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%97%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">简介-什么是列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">相关函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">进阶操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%BF%AD%E4%BB%A3%E5%88%97%E8%A1%A8%EF%BC%8C%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE%E5%88%97%E8%A1%A8%E4%B8%8B%E6%A0%87%E7%B4%A2%E5%BC%95"><span class="toc-number">5.1.</span> <span class="toc-text">1、迭代列表，如何访问列表下标索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81append-%E4%B8%8E-extend-%E6%96%B9%E6%B3%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">5.2.</span> <span class="toc-text">2、append 与 extend 方法有什么区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%A3%80%E6%9F%A5%E5%88%97%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA"><span class="toc-number">5.3.</span> <span class="toc-text">3、检查列表是否为空</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E5%88%87%E7%89%87"><span class="toc-number">5.4.</span> <span class="toc-text">4、如何理解切片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%A6%82%E4%BD%95%E6%8B%B7%E8%B4%9D%E4%B8%80%E4%B8%AA%E5%88%97%E8%A1%A8%E5%AF%B9%E8%B1%A1"><span class="toc-number">5.5.</span> <span class="toc-text">5、如何拷贝一个列表对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0"><span class="toc-number">5.6.</span> <span class="toc-text">6、如何获取列表中的最后一个元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E5%A6%82%E4%BD%95%E5%AF%B9%E5%88%97%E8%A1%A8%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F"><span class="toc-number">5.7.</span> <span class="toc-text">7、如何对列表进行排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81%E5%A6%82%E4%BD%95%E7%A7%BB%E9%99%A4%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0"><span class="toc-number">5.8.</span> <span class="toc-text">8、如何移除列表中的元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8"><span class="toc-number">5.9.</span> <span class="toc-text">9、如何连接两个列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81%E5%A6%82%E4%BD%95%E9%9A%8F%E6%9C%BA%E8%8E%B7%E5%8F%96%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%AA%E5%85%83%E7%B4%A0"><span class="toc-number">5.10.</span> <span class="toc-text">10、如何随机获取列表中的某个元素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="toc-number">6.</span> <span class="toc-text">写在最后</span></a></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/img/cover/Python.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">Hobee</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/photo/"><i class="fa-fw fa fa-photo"></i><span> Photo</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">Python 列表使用指南</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-04-01 14:19:01"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-04-01</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-06-08 09:38:22"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-06-08</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fa fa-angle-right post-meta__separator" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/Python/">Python</a><i class="fa fa-angle-right post-meta__separator" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%95%99%E7%A8%8B/Python/%E5%88%97%E8%A1%A8/">列表</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">2.7k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 11 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2020/04/01/Python%20%E5%88%97%E8%A1%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/04/01/Python%20%E5%88%97%E8%A1%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><div class="note success">
+            <p>本文由Hobee原创，并仅在本站发表。</p><p>如需转载请注明出处，万分感谢。</p><p>如有问题请通过<a href="mailto:lzqpublic@163.com">邮件</a>联系作者。</p>
+          </div>
+
+<div class="note info">
+            <p>本文封面图片来源于 <a target="_blank" rel="noopener" href="https://www.brandnewjimzhang.com/">Jim Zhang</a> 。</p><p>本讲义中部分内容参考自<a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-list.html">菜鸟教程</a> 。</p><p>本讲义中进阶操作参考自 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vtjIGZ2WJAQTkIE09twPkQ">关于Python列表操作，最常见的10个问题</a> 。</p>
+          </div>
+
+<h2 id="简介-什么是列表"><a href="#简介-什么是列表" class="headerlink" title="简介-什么是列表"></a>简介-什么是列表</h2><ul>
+<li><p>序列是Python中最基本的数据结构。序列中的每个元素都分配一个数字 - 它的位置，或索引，第一个索引是0，第二个索引是1，依此类推。</p>
+</li>
+<li><p>Python有6个序列的内置类型，但最常见的是列表和元组。</p>
+</li>
+<li><p>序列都可以进行的操作包括索引，切片，加，乘，检查成员。</p>
+</li>
+<li><p>此外，Python已经内置确定序列的长度以及确定最大和最小的元素的方法。</p>
+</li>
+<li><p>列表是最常用的Python数据类型，它可以作为一个方括号内的逗号分隔值出现。</p>
+</li>
+<li><p>列表的数据项不需要具有相同的类型</p>
+</li>
+</ul>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p><strong>创建列表</strong></p>
+<ul>
+<li><p>[]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = []</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(a)</span><br><span class="line">&lt;<span class="keyword">class</span> <span class="string">&#x27;list&#x27;</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1 = [<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1997</span>, <span class="number">2000</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1</span><br><span class="line">[<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1997</span>, <span class="number">2000</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>list()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#参数必须为可迭代变量</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="built_in">list</span>(<span class="string">&#x27;abc&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="built_in">list</span>(<span class="number">1</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError: <span class="string">&#x27;int&#x27;</span> <span class="built_in">object</span> <span class="keyword">is</span> <span class="keyword">not</span> iterable</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>访问元素</strong></p>
+<p>使用下标索引来访问列表中的值，同样你也可以使用方括号的形式截取字符，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1997</span>, <span class="number">2000</span>];</span><br><span class="line">list2 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span> ];</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;list1[0]: &quot;</span>, list1[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;list2[1:5]: &quot;</span>, list2[<span class="number">1</span>:<span class="number">5</span>])</span><br><span class="line">-----------------------------------</span><br><span class="line">list1[<span class="number">0</span>]: Google</span><br><span class="line">list2[<span class="number">1</span>:<span class="number">5</span>]: [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<p><strong>更新列表</strong></p>
+<p>你可以对列表的数据项进行修改或更新，你也可以使用append()方法来添加列表项，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1997</span>, <span class="number">2000</span>]</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;第三个元素为 : &quot;</span>, <span class="built_in">list</span>[<span class="number">2</span>])</span><br><span class="line"><span class="built_in">list</span>[<span class="number">2</span>] = <span class="number">2001</span></span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;更新后的第三个元素为 : &quot;</span>, <span class="built_in">list</span>[<span class="number">2</span>])</span><br><span class="line">----------------------------------------</span><br><span class="line">第三个元素为 :  <span class="number">1997</span></span><br><span class="line">更新后的第三个元素为 :  <span class="number">2001</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>删除元素</strong></p>
+<ul>
+<li><p>del</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1997</span>, <span class="number">2000</span>]</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;原始列表 : &quot;</span>, <span class="built_in">list</span>)</span><br><span class="line"><span class="keyword">del</span> <span class="built_in">list</span>[<span class="number">2</span>]</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;删除第三个元素 : &quot;</span>, <span class="built_in">list</span>)</span><br><span class="line">-----------------------------------------</span><br><span class="line">原始列表 :  [<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1997</span>, <span class="number">2000</span>]</span><br><span class="line">删除第三个元素 :  [<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>, <span class="number">2000</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>pop()</p>
+</li>
+<li><p>remove()</p>
+</li>
+</ul>
+<p><strong>脚本操作符</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Python 表达式</th>
+<th align="left">结果</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">len([1, 2, 3])</td>
+<td align="left">3</td>
+<td align="left">长度</td>
+</tr>
+<tr>
+<td align="left">[1, 2, 3] + [4, 5, 6]</td>
+<td align="left">[1, 2, 3, 4, 5, 6]</td>
+<td align="left">组合</td>
+</tr>
+<tr>
+<td align="left">[‘Hi!’] * 4</td>
+<td align="left">[‘Hi!’, ‘Hi!’, ‘Hi!’, ‘Hi!’]</td>
+<td align="left">重复</td>
+</tr>
+<tr>
+<td align="left">3 in [1, 2, 3]</td>
+<td align="left">True</td>
+<td align="left">元素是否存在于列表中</td>
+</tr>
+<tr>
+<td align="left">for x in [1, 2, 3]: print(x, end&#x3D;” “)</td>
+<td align="left">1 2 3</td>
+<td align="left">迭代</td>
+</tr>
+</tbody></table>
+<h2 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h2><p>Python包含以下函数:（大多和字符串相似）</p>
+<table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">函数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-len.html">len(list)</a> 列表元素个数</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-max.html">max(list)</a> 返回列表元素最大值</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-min.html">min(list)</a> 返回列表元素最小值</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-list.html">list(seq)</a> 将元组转换为列表</td>
+</tr>
+</tbody></table>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>Python包含以下方法:（大多和字符串相似）</p>
+<table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-append.html">list.append(obj)</a> 在列表末尾添加新的对象</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-count.html">list.count(obj)</a> 统计某个元素在列表中出现的次数</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-extend.html">list.extend(seq)</a> 在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-index.html">list.index(obj)</a> 从列表中找出某个值第一个匹配项的索引位置</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-insert.html">list.insert(index, obj)</a> 将对象插入列表</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-pop.html">list.pop([index&#x3D;-1])</a> 移除列表中的一个元素（默认最后一个元素），并且返回该元素的值</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-remove.html">list.remove(obj)</a> 移除列表中某个值的第一个匹配项</td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-reverse.html">list.reverse()</a> 反向列表中元素</td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-sort.html">list.sort( key&#x3D;None, reverse&#x3D;False)</a> 对原列表进行排序</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-clear.html">list.clear()</a> 清空列表</td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-att-list-copy.html">list.copy()</a> 复制列表</td>
+</tr>
+</tbody></table>
+<h2 id="进阶操作"><a href="#进阶操作" class="headerlink" title="进阶操作"></a>进阶操作</h2><p>本部分参考自<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vtjIGZ2WJAQTkIE09twPkQ">关于Python列表操作，最常见的10个问题</a></p>
+<h3 id="1、迭代列表，如何访问列表下标索引"><a href="#1、迭代列表，如何访问列表下标索引" class="headerlink" title="1、迭代列表，如何访问列表下标索引"></a>1、迭代列表，如何访问列表下标索引</h3><p>普通版：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">items = [<span class="number">8</span>, <span class="number">23</span>, <span class="number">45</span>]</span><br><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(items)):</span><br><span class="line">    <span class="built_in">print</span>(index, <span class="string">&quot;--&gt;&quot;</span>, items[index])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="number">0</span> --&gt; <span class="number">8</span></span><br><span class="line"><span class="number">1</span> --&gt; <span class="number">23</span></span><br><span class="line"><span class="number">2</span> --&gt; <span class="number">45</span></span><br></pre></td></tr></table></figure>
+
+<p>优雅版：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, item <span class="keyword">in</span> <span class="built_in">enumerate</span>(items):</span><br><span class="line">    <span class="built_in">print</span>(index, <span class="string">&quot;--&gt;&quot;</span>, item)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="number">0</span> --&gt; <span class="number">8</span></span><br><span class="line"><span class="number">1</span> --&gt; <span class="number">23</span></span><br><span class="line"><span class="number">2</span> --&gt; <span class="number">45</span></span><br></pre></td></tr></table></figure>
+
+<p><code>enumerate</code> 还可以指定元素的第一个元素从几开始，默认是0，也可以指定从1开始：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, item <span class="keyword">in</span> <span class="built_in">enumerate</span>(items, start=<span class="number">1</span>):</span><br><span class="line">    <span class="built_in">print</span>(index, <span class="string">&quot;--&gt;&quot;</span>, item)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="number">1</span> --&gt; <span class="number">8</span></span><br><span class="line"><span class="number">2</span> --&gt; <span class="number">23</span></span><br><span class="line"><span class="number">3</span> --&gt; <span class="number">45</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2、append-与-extend-方法有什么区别"><a href="#2、append-与-extend-方法有什么区别" class="headerlink" title="2、append 与 extend 方法有什么区别"></a>2、append 与 extend 方法有什么区别</h3><p><code>append</code>表示把某个数据当做新元素<strong>追加</strong>到列表的最后面，它的参数可以是任意对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">y = [<span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">x.append(y)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>]]</span><br></pre></td></tr></table></figure>
+
+<p><code>extend</code> 的参数必须是一个可迭代对象，表示把该对象里面的所有元素逐个地追加到列表的后面</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">y = [<span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">x.extend(y)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 等价于：</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> y:</span><br><span class="line">    x.append(i)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、检查列表是否为空"><a href="#3、检查列表是否为空" class="headerlink" title="3、检查列表是否为空"></a>3、检查列表是否为空</h3><p>普通版：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(items) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;空列表&quot;</span>)</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> items == []:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;空列表&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>优雅版：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> items:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;空列表&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、如何理解切片"><a href="#4、如何理解切片" class="headerlink" title="4、如何理解切片"></a>4、如何理解切片</h3><p>切片用于获取列表中指定范围的子集，语法非常简单</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">items[start:end:step]</span><br></pre></td></tr></table></figure>
+
+<p>从 start 到 end-1 位置之间的元素。step 表示步长，默认为1，表示连续获取，如果 step 为 2 就表示每隔一个元素获取。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">3</span>:<span class="number">8</span>] <span class="comment"># 第3到第8位置之间的元素</span></span><br><span class="line">[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">3</span>:<span class="number">8</span>:<span class="number">2</span>] <span class="comment"># 第3到第8位置之间的元素，每隔一个元素获取</span></span><br><span class="line">[<span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[:<span class="number">5</span>]   <span class="comment"># 省略start表示从第0个元素开始</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">3</span>:]  <span class="comment"># 省略end表示到最后一个元素</span></span><br><span class="line">[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[::]  <span class="comment"># 都省略相当于拷贝一个列表，这种拷贝属于浅拷贝</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、如何拷贝一个列表对象"><a href="#5、如何拷贝一个列表对象" class="headerlink" title="5、如何拷贝一个列表对象"></a>5、如何拷贝一个列表对象</h3><p>第一种方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_list = old_list[:]</span><br></pre></td></tr></table></figure>
+
+<p>第二种方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_list = <span class="built_in">list</span>(old_list)</span><br></pre></td></tr></table></figure>
+
+<p>第三种方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="comment"># 浅拷贝</span></span><br><span class="line">new_list = copy.copy(old_list)</span><br><span class="line"><span class="comment"># 深拷贝</span></span><br><span class="line">new_list = copy.deepcopy(old_list)</span><br><span class="line"><span class="comment">#据我观察这两个在Python3.7中已经没有区别了</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6、如何获取列表中的最后一个元素"><a href="#6、如何获取列表中的最后一个元素" class="headerlink" title="6、如何获取列表中的最后一个元素"></a>6、如何获取列表中的最后一个元素</h3><p>索引列表中的元素不仅支持正数还支持负数，正数表示从列表的左边开始索引，负数表示从列表的右边开始索引，获取最后一个元素有两种方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="built_in">len</span>(a)-<span class="number">1</span>]</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[-<span class="number">1</span>]</span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7、如何对列表进行排序"><a href="#7、如何对列表进行排序" class="headerlink" title="7、如何对列表进行排序"></a>7、如何对列表进行排序</h3><p>列表排序有两种方式，一种是列表自带的方法 <code>list.sort()</code>，一种是内建函数 <code>sorted(list)</code>。复杂的数据类型可通过指定 <code>key</code>参数进行排序。由字典构成的列表，根据字典元素中的age字段进行排序：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">items = [&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Homer&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">39</span>&#125;,</span><br><span class="line">         &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bart&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">10</span>&#125;,</span><br><span class="line">         &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&#x27;cater&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span>&#125;]</span><br><span class="line"></span><br><span class="line">items.sort(key=<span class="keyword">lambda</span> item: item.get(<span class="string">&quot;age&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(items)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[&#123;<span class="string">&#x27;age&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bart&#x27;</span>&#125;, &#123;<span class="string">&#x27;age&#x27;</span>: <span class="number">20</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;cater&#x27;</span>&#125;, &#123;<span class="string">&#x27;age&#x27;</span>: <span class="number">39</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Homer&#x27;</span>&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>列表有 <code>sort</code>方法，用于对原列表进行重新排序，指定 key 参数，key 是匿名函数，item 是列表中的字典元素，我们根据字典中的age进行排序，默认是按升序排列，指定 reverse&#x3D;True 按降序排列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">items.sort(key=<span class="keyword">lambda</span> item: item.get(<span class="string">&quot;age&quot;</span>), reverse=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Homer&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">39</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;cater&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bart&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">10</span>&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>如果不希望改变原列表，而是生成一个新的有序列表对象，那么可以内置函数 sorted ，该函数返回新列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">items = [&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Homer&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">39</span>&#125;,</span><br><span class="line">         &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bart&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">10</span>&#125;,</span><br><span class="line">         &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&#x27;cater&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span>&#125;]</span><br><span class="line"></span><br><span class="line">new_items = <span class="built_in">sorted</span>(items, key=<span class="keyword">lambda</span> item: item.get(<span class="string">&quot;age&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(items)</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Homer&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">39</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bart&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">10</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;cater&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span>&#125;]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(new_items)</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bart&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">10</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;cater&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Homer&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">39</span>&#125;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="8、如何移除列表中的元素"><a href="#8、如何移除列表中的元素" class="headerlink" title="8、如何移除列表中的元素"></a>8、如何移除列表中的元素</h3><p>删除列表中的元素有三种方式</p>
+<p>remove 移除某个元素，而且只能移除第一次出现的元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">0</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.remove(<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">[<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果要移除的元素不在列表中，则抛出 ValueError 异常</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.remove(<span class="number">7</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">ValueError: <span class="built_in">list</span>.remove(x): x <span class="keyword">not</span> <span class="keyword">in</span> <span class="built_in">list</span>·</span><br></pre></td></tr></table></figure>
+
+<p>del指令：根据指定的位置移除某元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"><span class="comment"># 移除第一个元素</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> a[<span class="number">1</span>]</span><br><span class="line">[<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当超出列表的下表索引时，抛出IndexError的异常</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> a[<span class="number">7</span>]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">IndexError: <span class="built_in">list</span> assignment index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
+
+<p>pop函数 与del 类似，但是 pop 函数可以返回移除的元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">4</span>, <span class="number">3</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.pop(<span class="number">1</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">[<span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同样，当超出列表的下表索引时，抛出IndexError的异常</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.pop(<span class="number">7</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">IndexError: pop index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="9、如何连接两个列表"><a href="#9、如何连接两个列表" class="headerlink" title="9、如何连接两个列表"></a>9、如何连接两个列表</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">listone = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">listtwo = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">mergedlist = listone + listtwo</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(mergelist)</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+
+<p>列表实现了 <code>+</code> 的运算符重载，使得 <code>+</code> 不仅支持数值相加，还支持两个列表相加，只要你实现了 对象的 <code>__add__</code>操作，任何对象都可以实现 <code>+</code> 操作，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, age</span>):</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;User(%d)&#x27;</span> % self.age</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__add__</span>(<span class="params">self, other</span>):</span><br><span class="line">        age = self.age + other.age</span><br><span class="line">        <span class="keyword">return</span> User(age)</span><br><span class="line"></span><br><span class="line">user_a = User(<span class="number">10</span>)</span><br><span class="line">user_b = User(<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">c = user_a + user_b</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">User(<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="10、如何随机获取列表中的某个元素"><a href="#10、如何随机获取列表中的某个元素" class="headerlink" title="10、如何随机获取列表中的某个元素"></a>10、如何随机获取列表中的某个元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">items = [<span class="number">8</span>, <span class="number">23</span>, <span class="number">45</span>, <span class="number">12</span>, <span class="number">78</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>random.choice(items)</span><br><span class="line"><span class="number">78</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>random.choice(items)</span><br><span class="line"><span class="number">45</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>random.choice(items)</span><br><span class="line"><span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p><strong>list与string区别</strong></p>
+<p>list可修改，str不可修改</p>
+<p><strong>引用型操作与加工型操作</strong></p>
+<p>引用型有return</p>
+<p>加工型一般没有return</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">hobee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://hobeedzc.github.io/2020/04/01/Python%20%E5%88%97%E8%A1%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">https://hobeedzc.github.io/2020/04/01/Python%20%E5%88%97%E8%A1%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://HoBeedzc.github.io" target="_blank">Hobee</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/%E5%88%97%E8%A1%A8/">列表</a></div><div class="post_share"><div class="social-share" data-image="/img/logo.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/04/03/Python%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8%E5%8F%8A%E5%85%B6%E7%AE%80%E5%8D%95%E5%A4%84%E7%90%86/"><img class="prev_cover lazyload" data-src="/img/cover/Python.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Python常见异常及其简单处理</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/04/03/Python常见异常及其简单处理/" title="Python常见异常及其简单处理"><img class="relatedPosts_cover lazyload"data-src="/img/cover/Python.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-history fa-fw" aria-hidden="true"></i> 2020-06-08</div><div class="relatedPosts_title">Python常见异常及其简单处理</div></div></a></div><div class="relatedPosts_item"><a href="/2020/05/09/Python简单算法/" title="Python简单算法"><img class="relatedPosts_cover lazyload"data-src="/img/cover/Python.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-history fa-fw" aria-hidden="true"></i> 2020-06-08</div><div class="relatedPosts_title">Python简单算法</div></div></a></div><div class="relatedPosts_item"><a href="/2020/05/03/大计基学习方法及注意事项/" title="浅谈大计基学习方法及注意事项"><img class="relatedPosts_cover lazyload"data-src="/img/cover/Python.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-history fa-fw" aria-hidden="true"></i> 2020-06-08</div><div class="relatedPosts_title">浅谈大计基学习方法及注意事项</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'AFB8hCVbw0tIWRABUCR6fyWH-gzGzoHsz',
+  appKey: 'GSA0KbbR0LN3DwRzaBtgerF7',
+  placeholder: 'Please leave your footprints',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'en',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" style="background-image: url(/img/cover/Python.png)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By hobee</div><div class="framework-info"><span>驱动 </span><a target="_blank" rel="noopener" href="https://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/click_heart.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.8}});</script></body></html>
