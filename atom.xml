@@ -6,7 +6,7 @@
   <link href="https://hobeedzc.github.io/atom.xml" rel="self"/>
   
   <link href="https://hobeedzc.github.io/"/>
-  <updated>2022-04-19T16:33:53.155Z</updated>
+  <updated>2022-04-20T03:57:53.695Z</updated>
   <id>https://hobeedzc.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【和毕leetcode】388. 文件的最长绝对路径</title>
+    <link href="https://hobeedzc.github.io/2022/04/20/%E3%80%90%E5%92%8C%E6%AF%95leetcode%E3%80%91/%E3%80%90%E5%92%8C%E6%AF%95leetcode%E3%80%91388.%20%E6%96%87%E4%BB%B6%E7%9A%84%E6%9C%80%E9%95%BF%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84/"/>
+    <id>https://hobeedzc.github.io/2022/04/20/%E3%80%90%E5%92%8C%E6%AF%95leetcode%E3%80%91/%E3%80%90%E5%92%8C%E6%AF%95leetcode%E3%80%91388.%20%E6%96%87%E4%BB%B6%E7%9A%84%E6%9C%80%E9%95%BF%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84/</id>
+    <published>2022-04-20T06:19:01.000Z</published>
+    <updated>2022-04-20T03:57:53.695Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>假设有一个同时存储文件和目录的文件系统。下图展示了文件系统的一个示例：</p><p> class="lazyload" data-src="https://assets.leetcode.com/uploads/2020/08/28/mdir.jpg" <img src="/"></p><p>这里将 <code>dir</code> 作为根目录中的唯一目录。<code>dir</code> 包含两个子目录 <code>subdir1</code> 和 <code>subdir2</code> 。<code>subdir1</code> 包含文件 <code>file1.ext</code> 和子目录 <code>subsubdir1</code>；<code>subdir2</code> 包含子目录 <code>subsubdir2</code>，该子目录下包含文件 <code>file2.ext</code> 。</p><p>在文本格式中，如下所示(⟶表示制表符)：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dir</span><br><span class="line">⟶ subdir1</span><br><span class="line">⟶ ⟶ file1.ext</span><br><span class="line">⟶ ⟶ subsubdir1</span><br><span class="line">⟶ subdir2</span><br><span class="line">⟶ ⟶ subsubdir2</span><br><span class="line">⟶ ⟶ ⟶ file2.ext</span><br></pre></td></tr></table></figure><p>如果是代码表示，上面的文件系统可以写为 <code>&quot;dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext&quot; </code>。<code>&#39;\n&#39;</code> 和 <code>&#39;\t&#39;</code> 分别是换行符和制表符。</p><p>文件系统中的每个文件和文件夹都有一个唯一的 绝对路径 ，即必须打开才能到达文件&#x2F;目录所在位置的目录顺序，所有路径用 <code>&#39;/&#39;</code> 连接。上面例子中，指向 <code>file2.ext</code> 的 绝对路径 是 <code>&quot;dir/subdir2/subsubdir2/file2.ext&quot;</code> 。每个目录名由字母、数字和&#x2F;或空格组成，每个文件名遵循 <code>name.extension</code> 的格式，其中 <code>name</code> 和 <code>extension</code> 由字母、数字和&#x2F;或空格组成。</p><p>给定一个以上述格式表示文件系统的字符串 <code>input</code> ，返回文件系统中 指向 文件 的 最长绝对路径 的长度 。 如果系统中没有文件，返回 <code>0</code> 。</p><p>传送门：<a href="https://leetcode-cn.com/problems/longest-absolute-file-path">https://leetcode-cn.com/problems/longest-absolute-file-path</a></p><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p> class="lazyload" data-src="https://assets.leetcode.com/uploads/2020/08/28/dir1.jpg" <img src="/"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：input = &quot;dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext&quot;</span><br><span class="line">输出：20</span><br><span class="line">解释：只有一个文件，绝对路径为 &quot;dir/subdir2/file.ext&quot; ，路径长度 20</span><br></pre></td></tr></table></figure><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>这道题比较麻烦的地方在于读题，其实就是利用 <code>\n</code> <code>\t</code> 表示出了整个文件树。我们首先使用 <code>\n</code> 将不同文件&#x2F;文件夹分离，依次遍历，根据 <code>\t</code> 的个数确定该文件&#x2F;文件夹在哪一层（n 个 <code>\t</code> 就在第 n 层）。利用栈存储文件路径，如果是文件的话（文件中一定存在 <code>.</code> 字符，利用这个特点判断是否是文件）就计算一下当前的文件路径长度并维护一个最大长度变量，文件夹可以跳过这步。最后输出最大文件路径长度即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def lengthLongestPath(self, input: str) -&gt; int:</span><br><span class="line">        s = []</span><br><span class="line">        ptr = 0</span><br><span class="line">        ans = 0</span><br><span class="line">        for line in input.split(&#x27;\n&#x27;):</span><br><span class="line">            index = line.count(&#x27;\t&#x27;)</span><br><span class="line">            f = line.lstrip(&#x27;\t&#x27;)</span><br><span class="line">            if index == len(s):</span><br><span class="line">                s.append(f)</span><br><span class="line">            else:</span><br><span class="line">                s[index] = f</span><br><span class="line">            if &#x27;.&#x27; in f:</span><br><span class="line">                # print(s,len(&#x27;/&#x27;.join(s[:index + 1])))</span><br><span class="line">                ans = max(ans,len(&#x27;/&#x27;.join(s[:index + 1])))</span><br><span class="line">        return ans</span><br></pre></td></tr></table></figure><h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="/" class="lazyload" data-src="https://pic.leetcode-cn.com/1650425384-okYVEz-image.png"  alt="image.png"></p>]]></content>
+    
+    
+    <summary type="html">leetcode 388. 文件的最长绝对路径 题解</summary>
+    
+    
+    
+    <category term="题解" scheme="https://hobeedzc.github.io/categories/%E9%A2%98%E8%A7%A3/"/>
+    
+    <category term="leetcode" scheme="https://hobeedzc.github.io/categories/%E9%A2%98%E8%A7%A3/leetcode/"/>
+    
+    <category term="Python" scheme="https://hobeedzc.github.io/categories/%E9%A2%98%E8%A7%A3/leetcode/Python/"/>
+    
+    
+    <category term="Python" scheme="https://hobeedzc.github.io/tags/Python/"/>
+    
+    <category term="题解" scheme="https://hobeedzc.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+    <category term="leetcode" scheme="https://hobeedzc.github.io/tags/leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>域名搞事情|利用飞书建立私有域名邮箱</title>
